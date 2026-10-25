@@ -93,9 +93,9 @@ const carList=document.getElementById("carList");
 function renderCars(lang){const t=translations[lang];
 const carPhotos=[
   "https://i.ibb.co/SSnbZ30/Black-dacia.jpg",
-  "https://ibb.co/gZcMRvMm",
-  "https://ibb.co/0prfTQRS",
-  "https://ibb.co/0prfTQRS",
+  "https://i.ibb.co/LdszZQzY/White-dacia.jpg",
+  "https://i.ibb.co/JWHzVCw4/Grey-dacia.jpg",
+  "https://i.ibb.co/JWHzVCw4/Grey-dacia.jpg",
   "https://i.ibb.co/SSnbZ30/Black-dacia.jpg"
 ];
 ";const photoLabel=lang==="ar"?"صورة مرجعية للطراز":(lang==="en"?"MODEL REFERENCE PHOTO":"PHOTO DE RÉFÉRENCE");const fleetColors=[{en:"Black",fr:"Noire",ar:"سوداء",cls:"car-black"},{en:"White",fr:"Blanche",ar:"بيضاء",cls:"car-white"},{en:"Grey",fr:"Grise",ar:"رمادية",cls:"car-grey"},{en:"Grey",fr:"Grise",ar:"رمادية",cls:"car-grey"},{en:"Black",fr:"Noire",ar:"سوداء",cls:"car-black"}];carList.innerHTML=Array.from({length:5},(_,i)=>{const c=fleetColors[i];const color=lang==="ar"?c.ar:(lang==="en"?c.en:c.fr);return `<article class="car-card"><div class="car-art"><img class="${c.cls}" src="${carPhotos[i]}" alt="Dacia Sandero ${color} — photo de référence, pas la voiture exacte" loading="lazy"><span class="photo-note">${photoLabel}</span></div><div class="car-info"><h3>Dacia Sandero · ${color}</h3><div class="sub">${t.carDesc} · Tétouan</div><div class="features"><span class="pill">${t.manual}</span><span class="pill">${t.check}</span></div><div class="price-row"><div class="price">300 DH <small>${t.perDay}</small></div><button type="button" class="btn btn-red small-btn" data-car="${i+1}">${lang==="fr"?"Demander":(lang==="ar"?"اطلب":"Request")}</button></div></div></article>`}).join("");carList.querySelectorAll("[data-car]").forEach(b=>b.addEventListener("click",()=>{document.getElementById("car").value="Sandero "+b.dataset.car;document.getElementById("contact").scrollIntoView({behavior:"smooth"});}))}
